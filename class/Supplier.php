@@ -78,7 +78,7 @@
       try {
         $query = "UPDATE Supplier SET NamaDepan = ?, NamaBelakang = ? , NoHp = ?, Alamat = ? WHERE idSupplier = ?";
         $prepareDB = $this->conn->prepare($query);
-        $isSuccess = $prepareDB->execute([$this->NamaDepan, $this->NamaBelakang, $this->idSupplier, $this->NoHp, $this->Alamat]);
+        $isSuccess = $prepareDB->execute([$this->NamaDepan, $this->NamaBelakang, $this->NoHp, $this->Alamat, $this->idSupplier, ]);
         return $isSuccess;
       } catch (Exception $e) {
         throw $e;

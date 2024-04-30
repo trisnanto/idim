@@ -80,7 +80,7 @@
     }
 
     // create pengguna
-    function tambahPengguna () {
+    function simpanPengguna () {
       try {
         $query = "INSERT INTO Pengguna(NamaPengguna, Password, NamaDepan, NamaBelakang, NoHp, Alamat, idAkses) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $prepareDB = $this->conn->prepare($query);
@@ -101,7 +101,7 @@
     }
 
     // update pengguna
-    function updatePengguna() {
+    function rubahPengguna() {
       try {
         $query = "UPDATE Pengguna SET NamaPengguna = ?, Password = ?, NamaDepan = ?, NamaBelakang = ?, NoHp = ?, Alamat = ?, idAkses = ? WHERE idPengguna = ?";
         $prepareDB = $this->conn->prepare($query);

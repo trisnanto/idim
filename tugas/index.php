@@ -19,6 +19,7 @@
     ?>
     <h1>Dashboard Penjual</h1>
     <ul>
+      <li>Tambahkan salah satu perhitungan dari seluruh aplikasi yang anda buat, Anda diperbolehkan menambahkan tabel yang dibutuhkan sesuai kasus yang ada pada daftar berikut: </li>
       <li>a. Linier Programming untuk menentukan kombinasi paket penjualan barang</li>
       <li>b. Dashboard laporan rugi laba berdasarkan daftar barang</li>
     </ul>

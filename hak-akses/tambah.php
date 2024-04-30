@@ -48,13 +48,13 @@
 
               <div class="mb-3">
                 <label for="nama-akses" class="form-label">Nama Akses</label>
-                <input type="text" name="nama_akses" class="form-control" id="exampleInputEmail1" aria-describedby="nama-akses">
+                <input type="text" name="nama_akses" class="form-control" id="nama-akses" aria-describedby="nama-akses">
               </div>
               <div class="mb-3">
                 <label for="keterangan" class="form-label">Keterangan</label>
                 <input type="text" name="keterangan" class="form-control" id="keterangan">
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
             </form>
           </div>
           

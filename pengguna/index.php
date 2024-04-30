@@ -4,16 +4,16 @@
     header("location:../index.php");
   }
   include "../class/config.php";
-  include "../class/Supplier.php";
-  $supplier = new Supplier($database);
-  $daftarSupplier = $supplier->daftarSupplier();
+  include "../class/Pengguna.php";
+  $pengguna = new Pengguna($database);
+  $daftarPengguna = $pengguna->daftarPengguna();
 ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supplier</title>
+    <title>Pengguna</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   </head>
@@ -30,34 +30,38 @@
         <div class="col p-3">
           <div class="row">
             <div class="col-6">
-              <h3>Daftar Supplier</h3>
+              <h3>Daftar Pengguna</h3>
             </div>
             <div class="col-6 text-end">
-              <a href="tambah.php"><button type="button" class="btn btn-success">Tambah Supplier</button></a>
+              <a href="tambah.php"><button type="button" class="btn btn-success">Tambah Pengguna</button></a>
             </div>
           </div>
           <div class="row">
             <table class="table">
               <thead>
                 <th scope="col">Id</th>
+                <th scope="col">Nama Pengguna</th>
                 <th scope="col">Nama Depan</th>
                 <th scope="col">Nama Belakang</th>
                 <th scope="col">No HP</th>
                 <th scope="col">Alamat</th>
+                <th scope="col">Id Akses</th>
                 <th scope="col">Kelola</th>
               </thead>
               <tbody>
                 <?php
                   // Check if the array is not empty
-                  if (!empty($daftarSupplier)) {
-                    foreach ($daftarSupplier as $key => $value) {
+                  if (!empty($daftarPengguna)) {
+                    foreach ($daftarPengguna as $key => $value) {
                       echo "<tr>";
-                      echo "<td>".$value['idSupplier']."</td>";
+                      echo "<td>".$value['idPengguna']."</td>";
+                      echo "<td>".$value['NamaPengguna']."</td>";
                       echo "<td>".$value['NamaDepan']."</td>";
                       echo "<td>".$value['NamaBelakang']."</td>";
                       echo "<td>".$value['NoHp']."</td>";
                       echo "<td>".$value['Alamat']."</td>";
-                      echo ('<td><form action="../controller/Supplier.php" method="post"><input type="text" name="action" class="form-control d-none" id="action" aria-describedby="action" value="delete"><input type="text" name="id_supplier" class="form-control d-none" id="id-supplier" aria-describedby="id-supplier" value="'.$value['idSupplier'].'"><a href="edit.php?idSupplier='.$value['idSupplier'].'"><button type="button" class="btn btn-primary">Edit</button></a><span> </span><button type="submit" class="btn btn-danger">Hapus</button></form>');
+                      echo "<td>".$value['idAkses']."</td>";
+                      echo ('<td><form action="../controller/Pengguna.php" method="post"><input type="text" name="action" class="form-control d-none" id="action" aria-describedby="action" value="delete"><input type="text" name="id_pengguna" class="form-control d-none" id="id-pengguna" aria-describedby="id-pengguna" value="'.$value['idPengguna'].'"><a href="edit.php?idPengguna='.$value['idPengguna'].'"><button type="button" class="btn btn-primary">Edit</button></a><span> </span><button type="submit" class="btn btn-danger">Hapus</button></form>');
                       echo "</tr>";
                     }
                   } else {

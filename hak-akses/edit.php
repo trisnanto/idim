@@ -50,7 +50,7 @@
                 <label for="keterangan" class="form-label">Keterangan</label>
                 <input type="text" name="keterangan" class="form-control" id="keterangan" value="<?php echo $hakAkses['Keterangan'] ?>">
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
             </form>
           </div>
           

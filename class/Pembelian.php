@@ -1,10 +1,10 @@
 <?php
   class Pembelian {
     private $idPembelian;
-    private $idPengguna;
     private $idBarang;
     private $JumlahPembelian;
     private $HargaBeli;
+    private $idPengguna;
 
     private $conn;
 
@@ -66,7 +66,9 @@
 
     // read pembelian
     function daftarPembelian() {
-      $sql = "SELECT * FROM Pembelian";
+      // $sql = "SELECT * FROM Pembelian";
+      // $sql = "SELECT * FROM Pembelian JOIN Pengguna ON Pembelian.idPengguna = Pengguna.idPengguna JOIN Barang ON Pembelian.idBarang = Barang.idBarang";
+      $sql = "SELECT a.idPembelian, a.JumlahPembelian, a.HargaBeli, c.NamaBarang, b.NamaPengguna, (a.JumlahPembelian*a.HargaBeli) Modal FROM Pembelian a JOIN Pengguna b ON a.idPengguna = b.idPengguna JOIN Barang c ON a.idBarang = c.idBarang";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute();
       return $stmt->fetchAll();
@@ -75,7 +77,7 @@
     // update pembelian
     function rubahPembelian() {
       try {
-        $query = "UPDATE Pembelian SET idPengguna = ?, idBarang = ?, JumlahPembelian = ?, HargaBeli = ? WHERE idAkses = ?";
+        $query = "UPDATE Pembelian SET idPengguna = ?, idBarang = ?, JumlahPembelian = ?, HargaBeli = ? WHERE idPembelian = ?";
         $prepareDB = $this->conn->prepare($query);
         $isSuccess = $prepareDB->execute([$this->idPengguna, $this->idBarang, $this->JumlahPembelian, $this->HargaBeli, $this->idPembelian]);
         return $isSuccess;
@@ -108,6 +110,7 @@
         throw $e;
       }
     }
+
 
   }
 ?>

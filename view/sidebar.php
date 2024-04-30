@@ -54,7 +54,7 @@
         </a>
       </li>
       <li>
-      <a href="#" class="nav-link px-0 align-middle">
+      <a href="../pembelian/index.php" class="nav-link px-0 align-middle">
         <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Pembelian</span>
       </a>
     </li>';
@@ -70,26 +70,21 @@
       </li>';
       }
     ?>
-    
+
+    <?php
+      if($_SESSION["idAkses"] == "1" || $_SESSION["idAkses"] == "2"){
+        echo '<li>
+        <a href="../laporan/index.php" class="nav-link px-0 align-middle">
+          <i class="fs-4 bi-file-text-fill"></i> <span class="ms-1 d-none d-sm-inline">Laporan</span>
+        </a>
+      </li>';
+      }
+    ?>
     
     <li>
-      <a href="../laporan/index.php" class="nav-link px-0 align-middle">
-        <i class="fs-4 bi-file-text-fill"></i> <span class="ms-1 d-none d-sm-inline">Laporan</span>
-      </a>
+      <a class="dropdown-item" href="../controller/logout.php"><button class="btn btn-danger">Logout <?php echo (" ".$_SESSION["NamaDepan"]." ".$_SESSION["NamaBelakang"]);?></button></a>
     </li>
+    
   </ul>
-  <hr>
-  <div class="dropdown pb-4">
-    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-      <i class="fs-4 bi-person-circle"></i><span class="d-none d-sm-inline mx-1"><?php echo (" ".$_SESSION["NamaDepan"]." ".$_SESSION["NamaBelakang"]);?></span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li>
-            <hr class="dropdown-divider">
-        </li>
-        <li><a class="dropdown-item" href="../controller/logout.php">Sign out</a></li>
-    </ul>
-  </div>
+  
 </div>

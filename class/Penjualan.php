@@ -75,7 +75,9 @@
 
     // read Penjualan
     function daftarPenjualan() {
-      $sql = "SELECT * FROM Penjualan";
+      // $sql = "SELECT * FROM Penjualan";
+      // $sql = "SELECT *, CONCAT(Pelanggan.NamaDepan, ' ', Pelanggan.NamaBelakang) AS NamaPelanggan FROM Penjualan JOIN Pengguna ON Penjualan.idPengguna = Pengguna.idPengguna JOIN Barang ON Penjualan.idBarang = Barang.idBarang JOIN Pelanggan ON Penjualan.idPelanggan = Pelanggan.idPelanggan";
+      $sql = "SELECT a.idPenjualan, a.JumlahPenjualan, a.HargaJual, c.NamaBarang, b.NamaPengguna, (a.JumlahPenjualan*a.HargaJual) Omset, CONCAT(d.NamaDepan, ' ', d.NamaBelakang) NamaPelanggan FROM Penjualan a JOIN Pengguna b ON a.idPengguna = b.idPengguna JOIN Barang c ON a.idBarang = c.idBarang JOIN Pelanggan d ON a.idPelanggan = d.idPelanggan";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute();
       return $stmt->fetchAll();
@@ -84,7 +86,7 @@
     // update Penjualan
     function rubahPenjualan() {
       try {
-        $query = "UPDATE Penjualan SET idPengguna = ?, idBarang = ?, idPelanggan = ?, JumlahPenjualan = ?, HargaJual = ? WHERE idAkses = ?";
+        $query = "UPDATE Penjualan SET idPengguna = ?, idBarang = ?, idPelanggan = ?, JumlahPenjualan = ?, HargaJual = ? WHERE idPenjualan = ?";
         $prepareDB = $this->conn->prepare($query);
         $isSuccess = $prepareDB->execute([$this->idPengguna, $this->idBarang, $this->idPelanggan, $this->JumlahPenjualan, $this->HargaJual, $this->idPenjualan]);
         return $isSuccess;

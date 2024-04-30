@@ -4,16 +4,16 @@
     header("location:../index.php");
   }
   include "../class/config.php";
-  include "../class/Supplier.php";
-  $supplier = new Supplier($database);
-  $daftarSupplier = $supplier->daftarSupplier();
+  include "../class/Laporan.php";
+  $laporan = new Laporan($database);
+  $laporanLabaRugi = $laporan->getLaporanLabaRugi();
 ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supplier</title>
+    <title>Laporan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   </head>
@@ -30,35 +30,42 @@
         <div class="col p-3">
           <div class="row">
             <div class="col-6">
-              <h3>Daftar Supplier</h3>
+              <h3>Laporan Laba Rugi</h3>
             </div>
             <div class="col-6 text-end">
-              <a href="tambah.php"><button type="button" class="btn btn-success">Tambah Supplier</button></a>
             </div>
           </div>
           <div class="row">
             <table class="table">
               <thead>
-                <th scope="col">Id</th>
-                <th scope="col">Nama Depan</th>
-                <th scope="col">Nama Belakang</th>
-                <th scope="col">No HP</th>
-                <th scope="col">Alamat</th>
-                <th scope="col">Kelola</th>
+                <th class="text-center" scope="col">Nama Barang</th>
+                <th class="text-center" scope="col">Jumlah Pembelian</th>
+                <th class="text-center" scope="col">Rata2 Harga Beli</th>
+                <th class="text-center" scope="col">Total Modal</th>
+                <th class="text-center" scope="col">Jumlah Penjualan</th>
+                <th class="text-center" scope="col">Rata2 Harga Jual</th>
+                <th class="text-center" scope="col">Omset Penjualan</th>
+                <th class="text-center" scope="col">Laba / Rugi</th>
               </thead>
               <tbody>
                 <?php
                   // Check if the array is not empty
-                  if (!empty($daftarSupplier)) {
-                    foreach ($daftarSupplier as $key => $value) {
+                  $grandTotalModal = 0;
+                  $grandTotalOmset = 0;
+                  if (!empty($laporanLabaRugi)) {
+                    foreach ($laporanLabaRugi as $key => $value) {
                       echo "<tr>";
-                      echo "<td>".$value['idSupplier']."</td>";
-                      echo "<td>".$value['NamaDepan']."</td>";
-                      echo "<td>".$value['NamaBelakang']."</td>";
-                      echo "<td>".$value['NoHp']."</td>";
-                      echo "<td>".$value['Alamat']."</td>";
-                      echo ('<td><form action="../controller/Supplier.php" method="post"><input type="text" name="action" class="form-control d-none" id="action" aria-describedby="action" value="delete"><input type="text" name="id_supplier" class="form-control d-none" id="id-supplier" aria-describedby="id-supplier" value="'.$value['idSupplier'].'"><a href="edit.php?idSupplier='.$value['idSupplier'].'"><button type="button" class="btn btn-primary">Edit</button></a><span> </span><button type="submit" class="btn btn-danger">Hapus</button></form>');
+                      echo "<td>".$value['NamaBarang']."</td>";
+                      echo '<td class="text-center">'.$value['TotalPembelian'].'</td>';
+                      echo '<td class="text-end">'.$value['AvgHargaBeli'].'</td>';
+                      echo '<td class="text-end">'.$value['TotalModal'].'</td>';
+                      echo '<td class="text-center">'.$value['TotalPenjualan'].'</td>';
+                      echo '<td class="text-end">'.$value['AvgHargaJual'].'</td>';
+                      echo '<td class="text-end">'.$value['TotalOmset'].'</td>';
+                      echo '<td class="text-end">'.$value['LabaRugi'].'</td>';
                       echo "</tr>";
+                      $grandTotalModal += $value['TotalModal'];
+                      $grandTotalOmset += $value['TotalOmset'];
                     }
                   } else {
                     // If the array is empty, display a message
@@ -68,6 +75,18 @@
                   }
                 ?>
               </tbody>
+              <tfoot>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="text-end fw-bold"><?php echo $grandTotalModal ?></td>
+                  <td></td>
+                  <td></td>
+                  <td class="text-end fw-bold"><?php echo $grandTotalOmset ?></td>
+                  <td class="text-end fw-bold"><?php echo ($grandTotalOmset-$grandTotalModal) ?></td>
+                </tr>
+              </tfoot>
             </table>
           </div>
           <div class="row">
