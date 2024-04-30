@@ -84,8 +84,8 @@
       }
     }
 
-     //delete hak akses
-     function hapusPembelian() {
+    //delete pembelian
+    function hapusPembelian() {
       try {
         $query = "DELETE FROM Pembelian WHERE idPembelian = ?";
         $prepareDB = $this->conn->prepare($query);
@@ -96,6 +96,18 @@
       }
     }
 
+    // find pembelian by id
+    function cariPembelian() {
+      try {
+        $query = "SELECT * FROM Pembelian WHERE idPembelian = ?";
+        $prepareDB = $this->conn->prepare($query);
+        $prepareDB->execute([$this->idPembelian]);
+        $dataPembelian = $prepareDB->fetch();
+        return $dataPembelian;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
 
   }
 ?>

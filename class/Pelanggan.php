@@ -96,5 +96,18 @@
         throw $e;
       }
     }
+
+    // find pelanggan by id
+    function cariPelanggan() {
+      try {
+        $query = "SELECT * FROM Pelanggan WHERE idPelanggan = ?";
+        $prepareDB = $this->conn->prepare($query);
+        $prepareDB->execute([$this->idPelanggan]);
+        $pelanggan = $prepareDB->fetch();
+        return $pelanggan;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
   }
 ?>

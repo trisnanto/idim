@@ -90,13 +90,27 @@
     }
 
     //delete barang
-    function hapusBarang($id)
+    function hapusBarang()
     {
       try {
         $query = "DELETE FROM Barang WHERE idBarang = ?";
         $prepareDB = $this->conn->prepare($query);
-        $isSuccess = $prepareDB->execute([$id]);
+        $isSuccess = $prepareDB->execute([$$this->idBarang]);
         return $isSuccess;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+    //find barang by id
+    function cariBarang()
+    {
+      try {
+        $query = "SELECT * FROM Barang WHERE idBarang = ?";
+        $prepareDB = $this->conn->prepare($query);
+        $prepareDB->execute([$this->idBarang]);
+        $barang = $prepareDB->fetch();
+        return $barang;
       } catch (Exception $e) {
         throw $e;
       }

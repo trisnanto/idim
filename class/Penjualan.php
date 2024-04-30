@@ -93,8 +93,8 @@
       }
     }
 
-     //delete hak akses
-     function hapusPenjualan() {
+    //delete penjualan
+    function hapusPenjualan() {
       try {
         $query = "DELETE FROM Penjualan WHERE idPenjualan = ?";
         $prepareDB = $this->conn->prepare($query);
@@ -105,6 +105,17 @@
       }
     }
 
-
+    // find penjualan by id
+    function cariPenjualan() {
+      try {
+        $query = "SELECT * FROM Penjualan WHERE idPenjualan = ?";
+        $prepareDB = $this->conn->prepare($query);
+        $prepareDB->execute([$this->idPenjualan]);
+        $penjualan = $prepareDB->fetch();
+        return $penjualan;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
   }
 ?>

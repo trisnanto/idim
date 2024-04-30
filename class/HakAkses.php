@@ -4,11 +4,8 @@
     private $idAkses;
     private $NamaAkses;
     private $Keterangan;
-    /* Properties */
     private $conn;
-    /* Get database access */
     
-    // create pdo connection
     public function __construct(\PDO $database) {
       $this->conn = $database;
     }
@@ -77,6 +74,19 @@
         $prepareDB = $this->conn->prepare($query);
         $isSuccess = $prepareDB->execute([$this->idAkses]);
         return $isSuccess;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+    //find hak akses by id
+    function cariHakAkses() {
+      try {
+        $query = "SELECT * FROM HakAkses WHERE idAkses = ?";
+        $prepareDB = $this->conn->prepare($query);
+        $prepareDB->execute([$this->idAkses]);
+        $hakAkses = $prepareDB->fetch();
+        return $hakAkses;
       } catch (Exception $e) {
         throw $e;
       }

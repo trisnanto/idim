@@ -1,7 +1,7 @@
 <?php
   session_start();
-  if(!isset($_SESSION["statuslogin"])){
-    header("location:../index.php");
+  if(!isset($_SESSION["statuslogin"]) || $_SESSION["idAkses"] == "3"){
+    header("location:../".$_SESSION['route']."/index.php");
   }
 ?>
 <!DOCTYPE html>

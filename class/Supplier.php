@@ -96,5 +96,18 @@
         throw $e;
       }
     }
+
+    // find supplier by id
+    function cariSupplier() {
+      try {
+        $query = "SELECT * FROM Supplier WHERE idSupplier = ?";
+        $prepareDB = $this->conn->prepare($query);
+        $prepareDB->execute([$this->idSupplier]);
+        $supplier = $prepareDB->fetch();
+        return $supplier;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
   }
 ?>

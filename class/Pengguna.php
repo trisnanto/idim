@@ -113,12 +113,25 @@
     }
 
     // delete pengguna
-    function hapusPengguna($id) {
+    function hapusPengguna() {
       try {
         $query = "DELETE FROM Pengguna WHERE idPengguna = ?";
         $prepareDB = $this->conn->prepare($query);
-        $penggunaDelete = $prepareDB->execute([$id]);
+        $penggunaDelete = $prepareDB->execute([$this->idPengguna]);
         return $penggunaDelete;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+    // find pengguna by id
+    function cariPengguna() {
+      try {
+        $query = "SELECT * FROM Pengguna WHERE idPengguna = ?";
+        $prepareDB = $this->conn->prepare($query);
+        $prepareDB->execute([$this->idPengguna]);
+        $dataPengguna = $prepareDB->fetch();
+        return $dataPengguna;
       } catch (Exception $e) {
         throw $e;
       }

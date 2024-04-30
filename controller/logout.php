@@ -1,0 +1,13 @@
+<?php
+  session_start();
+  unset($_SESSION["statuslogin"]);
+  unset($_SESSION["idPengguna"]);
+  unset($_SESSION["idAkses"]);
+  unset($_SESSION["NamaPengguna"]);
+  unset($_SESSION["NamaDepan"]);
+  unset($_SESSION["NamaBelakang"]);
+  unset($_SESSION["route"]);
+  session_destroy();
+  header("location:../index.php");
+  exit();
+?>
