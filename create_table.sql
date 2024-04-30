@@ -9,9 +9,10 @@ CREATE TABLE `HakAkses` (
 -- insert data to HakAkses table
 INSERT INTO HakAkses(NamaAkses, Keterangan)
 VALUES
-('Admin', 'All akses'),
-('Manajer', 'Manajer'),
-('Sales', 'Sales');
+('administrator', 'all access'),
+('manager', 'all pages'),
+('sales', 'penjualan page, pelanggan page');
+('purchasing', 'pembelian page, supplier page, barang page');
 
 -- create table Pengguna
 CREATE TABLE `Pengguna` (
@@ -27,6 +28,14 @@ CREATE TABLE `Pengguna` (
   KEY `idAkses` (`idAkses`),
   CONSTRAINT `Pengguna-idAkses` FOREIGN KEY (`idAkses`) REFERENCES `HakAkses` (`idAkses`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- insert data to Pengguna table
+INSERT INTO Pengguna(NamaPengguna, Password, NamaDepan, NamaBelakang, NoHp, Alamat, idAkses)
+VALUES
+('admin', '123123', 'System', 'Administrator', '08123456789', 'Jl. Admin', 1),
+('manajer', '123123', 'The', 'Manager', '08123456789', 'Jl. Manager', 2),
+('penjualan', '123123', 'Sales', 'Staff', '08123456789', 'Jl. Sales', 3),
+('pembelian', '123123', 'Purchasing', 'Staff', '08123456789', 'Jl. Purchasing', 4);
 
 -- create table Supplier
 CREATE TABLE `Supplier` (

@@ -82,7 +82,7 @@
     ?>
     
     <li>
-      <a class="dropdown-item" href="../controller/logout.php"><button class="btn btn-danger">Logout <?php echo (" ".$_SESSION["NamaDepan"]." ".$_SESSION["NamaBelakang"]);?></button></a>
+      <a class="dropdown-item" href="../controller/logout.php"><button class="btn btn-danger">Logout <?php echo (" ".$_SESSION["NamaPengguna"]);?></button></a>
     </li>
     
   </ul>

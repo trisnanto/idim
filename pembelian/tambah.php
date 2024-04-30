@@ -36,20 +36,20 @@
             </div>
           </div>
           <div class="row justify-content-center">
-            <div class="col-8">
+            <div class="col-10">
               <form action="../controller/Pembelian.php" method="POST">
                 <input type="text" name="action" class="form-control d-none" id="action" aria-describedby="action" value="create">
                 <input type="text" name="id_pengguna" class="form-control d-none" id="id-pengguna" aria-describedby="id-pengguna" value="<?php echo $_SESSION['idPengguna'] ?>">
                 
                 <div class="row">
-                  <div class="col-6">
+                  <div class="col-7">
                     <div class="mb-3">
                     <label for="id-barang" class="form-label">Nama Barang</label>
                       <select class="form-select" aria-label="select-id-barang" name="id_barang">
                         <?php
                           if (!empty($daftarBarang)) {
                             foreach ($daftarBarang as $key => $value) {
-                              echo ('"<option value="'.$value['idBarang'].'">'.$value['NamaBarang'].' - Harga Beli Terakhir : '.$value['HargaBeliTerakhir'].'</option>"');
+                              echo ('"<option value="'.$value['idBarang'].'">'.$value['NamaBarang'].' - Stock : '.$value['Stok'].' - Harga Beli Terakhir : '.$value['HargaBeliTerakhir'].'</option>"');
                             }
                           } else {
                             // If the array is empty, display a message
@@ -60,7 +60,7 @@
                     </div>
                     
                   </div>
-                  <div class="col-3">
+                  <div class="col-2">
                     <div class="mb-3">
                       <label for="jumlah-pembelian" class="form-label">Jumlah Pembelian</label>
                       <input type="text" name="jumlah_pembelian" class="form-control" id="jumlah-pembelian">

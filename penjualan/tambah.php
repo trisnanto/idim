@@ -7,7 +7,7 @@
   include "../class/Barang.php";
   include "../class/Pelanggan.php";
   $barang = new Barang($database);
-  $daftarBarang = $barang->daftarBarang();
+  $daftarBarang = $barang->daftarBarangSiapJual();
   $pelanggan = new Pelanggan($database);
   $daftarPelanggan = $pelanggan->daftarPelanggan();
 
@@ -39,13 +39,13 @@
             </div>
           </div>
           <div class="row justify-content-center">
-            <div class="col-8">
+            <div class="col-10">
               <form action="../controller/Penjualan.php" method="POST">
                 <input type="text" name="action" class="form-control d-none" id="action" aria-describedby="action" value="create">
                 <input type="text" name="id_pengguna" class="form-control d-none" id="id-pengguna" aria-describedby="id-pengguna" value="<?php echo $_SESSION['idPengguna'] ?>">
                 
                 <div class="row">
-                  <div class="col-6">
+                  <div class="col-7">
                     <div class="mb-3">
                       <label for="id-barang" class="form-label">Nama Barang</label>
                       <select class="form-select" aria-label="select-id-barang" name="id_barang">
@@ -63,7 +63,7 @@
                     </div>
                     
                   </div>
-                  <div class="col-3">
+                  <div class="col-2">
                     <div class="mb-3">
                       <label for="jumlah-penjualan" class="form-label">Jumlah Penjualan</label>
                       <input type="text" name="jumlah_penjualan" class="form-control" id="jumlah-penjualan">

@@ -44,9 +44,9 @@
                 <th scope="col">Keterangan</th>
                 <th scope="col">Stok</th>
                 <th scope="col">Satuan</th>
-                <th scope="col">Rata2 Harga Beli</th>
-                <th scope="col">Nama Pengguna</th>
+                <th scope="col">Harga Beli</th>
                 <th scope="col">Nama Supplier</th>
+                <th scope="col">Nama Pengguna</th>
                 <th scope="col">Kelola</th>
               </thead>
               <tbody>
@@ -61,8 +61,8 @@
                       echo "<td>".$value['Stok']."</td>";
                       echo "<td>".$value['Satuan']."</td>";
                       echo '<td class="text-end">'.$value['AvgHargaBeli'].'</td>';
-                      echo "<td>".$value['NamaPengguna']."</td>";
                       echo "<td>".$value['NamaSupplier']."</td>";
+                      echo "<td>".$value['NamaPengguna']."</td>";
                       echo ('<td><form action="../controller/Barang.php" method="post"><input type="text" name="action" class="form-control d-none" id="action" aria-describedby="action" value="delete"><input type="text" name="id_barang" class="form-control d-none" id="id-barang" aria-describedby="id-barang" value="'.$value['idBarang'].'"><a href="edit.php?idBarang='.$value['idBarang'].'"><button type="button" class="btn btn-primary">Edit</button></a><span> </span><button type="submit" class="btn btn-danger">Hapus</button></form>');
                       echo "</tr>";
                     }

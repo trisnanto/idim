@@ -136,7 +136,7 @@
         FROM Penjualan s, (select max(idPenjualan) idPenjualan, HargaJual FROM Penjualan GROUP BY idBarang) t
         WHERE s.idPenjualan = t.idPenjualan) e
         ON a.idBarang = e.idBarang
-        WHERE (COALESCE(b.TotalPembelian, 0)-COALESCE(c.TotalPenjualan, 0)) != 0
+        -- WHERE (COALESCE(b.TotalPembelian, 0)-COALESCE(c.TotalPenjualan, 0)) != 0
         ";
         $prepareDB = $this->conn->prepare($query);
         $prepareDB->execute();
@@ -169,6 +169,49 @@
         $prepareDB->execute([$this->idBarang]);
         $barang = $prepareDB->fetch();
         return $barang;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+    //read barang available for sale
+    function daftarBarangSiapJual() {
+      try {
+        $query = "SELECT a.*, Pengguna.NamaPengguna,
+        CONCAT(Supplier.NamaDepan, ' ', Supplier.NamaBelakang) AS NamaSupplier, 
+        COALESCE(b.TotalPembelian, 0), COALESCE(b.TotalHargaBeli,0),
+        ROUND((COALESCE(b.TotalHargaBeli, 0)/COALESCE(b.TotalPembelian,1)),0) AvgHargaBeli, 
+        COALESCE(c.TotalPenjualan, 0), 
+        (COALESCE(b.TotalPembelian, 0)-COALESCE(c.TotalPenjualan, 0)) AS Stok, 
+        d.HargaBeli AS HargaBeliTerakhir,
+        e.HargaJual AS HargaJualTerakhir
+        FROM Barang a
+        JOIN Supplier ON a.idSupplier = Supplier.idSupplier
+        JOIN Pengguna ON a.idPengguna = Pengguna.idPengguna
+        LEFT JOIN
+        (SELECT idBarang, SUM(JumlahPembelian) AS TotalPembelian, SUM(JumlahPembelian*HargaBeli) AS TotalHargaBeli
+          FROM Pembelian GROUP BY idBarang) b
+        ON a.idBarang = b.idBarang
+        LEFT JOIN
+        (SELECT idBarang, SUM(JumlahPenjualan) AS TotalPenjualan
+          FROM Penjualan GROUP BY idBarang) c 
+        ON a.idBarang = c.idBarang
+        LEFT JOIN
+        (SELECT x.idPembelian, x.idBarang, x.HargaBeli
+        FROM Pembelian x, (select max(idPembelian) idPembelian, HargaBeli FROM Pembelian GROUP BY idBarang) y
+        WHERE x.idPembelian = y.idPembelian) d
+        ON a.idBarang = d.idBarang
+        LEFT JOIN
+        (SELECT s.idPenjualan, s.idBarang, s.HargaJual
+        FROM Penjualan s, (select max(idPenjualan) idPenjualan, HargaJual FROM Penjualan GROUP BY idBarang) t
+        WHERE s.idPenjualan = t.idPenjualan) e
+        ON a.idBarang = e.idBarang
+        WHERE (COALESCE(b.TotalPembelian, 0)-COALESCE(c.TotalPenjualan, 0)) != 0
+        ";
+        $prepareDB = $this->conn->prepare($query);
+        $prepareDB->execute();
+        $daftarBarang = $prepareDB->fetchAll();
+        return $daftarBarang;
       } catch (Exception $e) {
         throw $e;
       }

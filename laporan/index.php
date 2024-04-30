@@ -40,10 +40,10 @@
               <thead>
                 <th class="text-center" scope="col">Nama Barang</th>
                 <th class="text-center" scope="col">Jumlah Pembelian</th>
-                <th class="text-center" scope="col">Rata2 Harga Beli</th>
+                <th class="text-center" scope="col">Harga Beli</th>
                 <th class="text-center" scope="col">Total Modal</th>
                 <th class="text-center" scope="col">Jumlah Penjualan</th>
-                <th class="text-center" scope="col">Rata2 Harga Jual</th>
+                <th class="text-center" scope="col">Harga Jual</th>
                 <th class="text-center" scope="col">Omset Penjualan</th>
                 <th class="text-center" scope="col">Laba / Rugi</th>
               </thead>
