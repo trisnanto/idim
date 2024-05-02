@@ -77,7 +77,7 @@
     function daftarPenjualan() {
       // $sql = "SELECT * FROM Penjualan";
       // $sql = "SELECT *, CONCAT(Pelanggan.NamaDepan, ' ', Pelanggan.NamaBelakang) AS NamaPelanggan FROM Penjualan JOIN Pengguna ON Penjualan.idPengguna = Pengguna.idPengguna JOIN Barang ON Penjualan.idBarang = Barang.idBarang JOIN Pelanggan ON Penjualan.idPelanggan = Pelanggan.idPelanggan";
-      $sql = "SELECT a.idPenjualan, a.JumlahPenjualan, a.HargaJual, c.NamaBarang, b.NamaPengguna, (a.JumlahPenjualan*a.HargaJual) Omset, CONCAT(d.NamaDepan, ' ', d.NamaBelakang) NamaPelanggan FROM Penjualan a JOIN Pengguna b ON a.idPengguna = b.idPengguna JOIN Barang c ON a.idBarang = c.idBarang JOIN Pelanggan d ON a.idPelanggan = d.idPelanggan";
+      $sql = "SELECT a.idPenjualan, a.JumlahPenjualan, a.HargaJual, c.NamaBarang, b.NamaPengguna, (a.JumlahPenjualan*a.HargaJual) Omset, CONCAT(d.NamaDepan, ' ', d.NamaBelakang) NamaPelanggan FROM Penjualan a JOIN Pengguna b ON a.idPengguna = b.idPengguna JOIN Barang c ON a.idBarang = c.idBarang JOIN Pelanggan d ON a.idPelanggan = d.idPelanggan ORDER BY a.idPenjualan ASC";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute();
       return $stmt->fetchAll();

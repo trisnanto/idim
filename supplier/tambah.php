@@ -12,8 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supplier</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
 
@@ -41,13 +40,13 @@
                   <div class="col-6">
                     <div class="mb-3">
                       <label for="nama-depan" class="form-label">Nama Depan</label>
-                      <input type="text" name="nama_depan" class="form-control" id="nama-depan">
+                      <input type="text" name="nama_depan" class="form-control" id="nama-depan" required>
                     </div>
                   </div>
                   <div class="col-6">
                     <div class="mb-3">
                       <label for="nama-belakang" class="form-label">Nama Belakang</label>
-                      <input type="text" name="nama_belakang" class="form-control" id="nama-belakang">
+                      <input type="text" name="nama_belakang" class="form-control" id="nama-belakang" required>
                     </div>
                   </div>
                 </div>
@@ -56,13 +55,13 @@
                   <div class="col-6">
                     <div class="mb-3">
                       <label for="no-hp" class="form-label">No HP</label>
-                      <input type="text" name="no_hp" class="form-control" id="no-hp">
+                      <input type="text" name="no_hp" class="form-control" id="no-hp" required>
                     </div>
                   </div>
                   <div class="col-6">
                     <div class="mb-3">
                       <label for="alamat" class="form-label">Alamat</label>
-                      <input type="text" name="alamat" class="form-control" id="alamat">
+                      <input type="text" name="alamat" class="form-control" id="alamat" required>
                     </div>
                   </div>
                 </div>
@@ -84,6 +83,6 @@
       
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

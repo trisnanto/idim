@@ -3,14 +3,13 @@
     {
       private $server ="127.0.0.1";
       private $username = "root";
-      private $password = "";
+      private $password = "g3m1l4ng";
       private $database = "cobain";
 
       function koneksidatabase() {
         try {
           // buat koneksi dengan database
-          $dbh = new PDO('mysql:host='. $this->server
-          .';dbname='. $this->database, $this->username, $this->password);
+          $dbh = new PDO('mysql:host='. $this->server.';dbname='. $this->database, $this->username, $this->password);
           // set error mode
           $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
           return $dbh;

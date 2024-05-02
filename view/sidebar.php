@@ -5,7 +5,7 @@
   <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
     <li class="nav-item">
       <a href="<?php echo ("../".$_SESSION['route']."/index.php");?>" class="nav-link align-middle px-0">
-        <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+        <img style="filter: invert(1)" src="/icons/speedometer2.svg" width="32" height="32"> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
       </a>
     </li>
     
@@ -13,12 +13,12 @@
       if($_SESSION["idAkses"] == "1"){
         echo '<li>
         <a href="../hak-akses/index.php" class="nav-link px-0 align-middle">
-          <i class="fs-4 bi-key-fill"></i> <span class="ms-1 d-none d-sm-inline">Hak Akses</span>
+          <img style="filter: invert(1)" src="/icons/key-fill.svg" width="32" height="32"> <span class="ms-1 d-none d-sm-inline">Hak Akses</span>
         </a>
       </li>
         <li>
         <a href="../pengguna/index.php" class="nav-link px-0 align-middle">
-          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Pengguna</span>
+          <img style="filter: invert(1)" src="/icons/people-fill.svg" width="32" height="32"> <span class="ms-1 d-none d-sm-inline">Pengguna</span>
         </a>
       </li>
         ';
@@ -29,7 +29,7 @@
       if($_SESSION["idAkses"] != "3"){
         echo '<li>
         <a href="../supplier/index.php" class="nav-link px-0 align-middle">
-          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Supplier</span>
+          <img style="filter: invert(1)" src="/icons/people-fill.svg" width="32" height="32"> <span class="ms-1 d-none d-sm-inline">Supplier</span>
         </a>
       </li>';
       }
@@ -39,7 +39,7 @@
       if($_SESSION["idAkses"] != "4"){
         echo '<li>
         <a href="../pelanggan/index.php" class="nav-link px-0 align-middle">
-          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Pelanggan</span>
+          <img style="filter: invert(1)" src="/icons/people-fill.svg" width="32" height="32"> <span class="ms-1 d-none d-sm-inline">Pelanggan</span>
         </a>
       </li>';
       }
@@ -50,22 +50,29 @@
       if($_SESSION["idAkses"] != "3"){
         echo '<li>
         <a href="../barang/index.php" class="nav-link px-0 align-middle">
-          <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Barang</span>
+          <img style="filter: invert(1)" src="/icons/grid-fill.svg" width="32" height="32"> <span class="ms-1 d-none d-sm-inline">Barang</span>
         </a>
       </li>
+      ';
+      }
+    ?>
+
+    <?php
+      if($_SESSION["idAkses"] != "3"  && $_SESSION["idAkses"] != "4"){
+        echo '
       <li>
       <a href="../pembelian/index.php" class="nav-link px-0 align-middle">
-        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Pembelian</span>
+        <img style="filter: invert(1)" src="/icons/table.svg" width="32" height="32"> <span class="ms-1 d-none d-sm-inline">Pembelian</span>
       </a>
     </li>';
       }
     ?>
     
     <?php
-      if($_SESSION["idAkses"] != "4"){
+      if($_SESSION["idAkses"] != "3" && $_SESSION["idAkses"] != "4"){
         echo '<li>
         <a href="../penjualan/index.php" class="nav-link px-0 align-middle">
-          <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Penjualan</span>
+          <img style="filter: invert(1)" src="/icons/table.svg" width="32" height="32"> <span class="ms-1 d-none d-sm-inline">Penjualan</span>
         </a>
       </li>';
       }
@@ -75,7 +82,7 @@
       if($_SESSION["idAkses"] == "1" || $_SESSION["idAkses"] == "2"){
         echo '<li>
         <a href="../laporan/index.php" class="nav-link px-0 align-middle">
-          <i class="fs-4 bi-file-text-fill"></i> <span class="ms-1 d-none d-sm-inline">Laporan</span>
+          <img style="filter: invert(1)" src="/icons/file-fill.svg" width="32" height="32"> <span class="ms-1 d-none d-sm-inline">Laporan</span>
         </a>
       </li>';
       }
