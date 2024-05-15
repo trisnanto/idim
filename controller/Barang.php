@@ -4,7 +4,7 @@
 	if(!isset($_SESSION["statuslogin"])){
 		header("location:../login.php");
 	}
-	require_once '../class/config.php';
+	require_once '../class/Database.php';
 	require_once '../class/Barang.php';
 
 	// Assuming you're using POST method to interact with this endpoint

@@ -3,7 +3,7 @@
   if(!isset($_SESSION["statuslogin"])){
     header("location:../index.php");
   }
-  include "../class/config.php";
+  include "../class/Database.php";
   include "../class/Barang.php";
   include "../class/Supplier.php";
   $barang = new Barang($database);

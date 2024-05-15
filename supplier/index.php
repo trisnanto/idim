@@ -3,7 +3,7 @@
   if(!isset($_SESSION["statuslogin"])){
     header("location:../index.php");
   }
-  include "../class/config.php";
+  include "../class/Database.php";
   include "../class/Supplier.php";
   $supplier = new Supplier($database);
   $daftarSupplier = $supplier->daftarSupplier();

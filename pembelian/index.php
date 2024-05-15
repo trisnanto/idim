@@ -3,7 +3,7 @@
   if(!isset($_SESSION["statuslogin"])){
     header("location:../index.php");
   }
-  include "../class/config.php";
+  include "../class/Database.php";
   include "../class/Pembelian.php";
   $pembelian = new Pembelian($database);
   $daftarPembelian = $pembelian->daftarPembelian();

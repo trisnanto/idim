@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include "../class/config.php";
+  include "../class/Database.php";
   include "../class/Pengguna.php";
   $pengguna = new Pengguna($database);
   $pengguna->setNamaPengguna (trim(strip_tags($_POST["username"])));
