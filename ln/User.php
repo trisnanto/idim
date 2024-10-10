@@ -122,7 +122,7 @@
         $query = "SELECT * FROM Users WHERE Username = ? AND Password = ?";
         $prepareDB = $this->conn->prepare($query);
         $prepareDB->execute([$this->Username, $this->Password]);
-        $userData = $prepareDB->fetchAll();
+        $userData = $prepareDB->fetch();
         return $userData;
       } catch (Exception $e) {
         throw $e;
