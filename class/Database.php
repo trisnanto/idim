@@ -3,7 +3,7 @@
     private $server ="127.0.0.1";
     private $username = "root";
     private $password = "g3m1l4ng";
-    private $database = "cobain";
+    private $database = "idim";
 
     function createConnection() {
       try {
